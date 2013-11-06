@@ -1,0 +1,1 @@
+Voting.Vizualization = Voting.Vizualization || {};
