@@ -22,15 +22,12 @@ module.exports = (grunt) ->
           'dist/public/javascripts/all.js': 'public/javascripts/**.js'
 
     copy:
-      images:
-        src: 'public/images'
-        dest: 'dist/public/images'
-      routes:
-        src: 'routes'
-        dest: 'dist/routes'
-      views:
-        src: 'views'
-        dest: 'dist/views'
+      client:
+        src: ['public/images/**', 'public/stylesheets/**']
+        dest: 'dist/'
+      server:
+        src: ['routes/**', 'views/**', 'app.js']
+        dest: 'dist/'
 
     clean:
       work: ['work']
@@ -45,5 +42,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-clean'
 
 
-  grunt.registerTask 'default', ['jshint:server', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'app', 'clean:work']
+  grunt.registerTask 'default', ['jshint:server', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'clean:work']
   grunt.registerTask 'dist-clean', ['clean:work', 'clean:dist']
