@@ -5,3 +5,10 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
+
+  if(env == 'development')
+    script(type='text/javascript', src='javascripts/_init.js')
+    script(type='text/javascript', src='javascripts/visualization.js')
+
+  else
+      script(type='text/javascript', src='javascripts/all.js')

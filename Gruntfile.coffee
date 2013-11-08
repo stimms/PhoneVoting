@@ -45,6 +45,24 @@ module.exports = (grunt) ->
         options:
           specs: 'public/specs/*.js'
 
+    env:
+      development:
+        NODE_ENV: 'development'
+
+    express:
+      development:
+        options:
+          livereload: true
+          server: 'app.js'
+      production:
+        options:
+          port: 8080
+
+    watch:
+      all:
+        files: ['views/*', 'routes/*.js']
+        tasks: ['server']
+
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-jshint'
@@ -53,7 +71,17 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-express'
+  grunt.loadNpmTasks 'grunt-env'
+
+  grunt.registerTask 'server', () ->
+    grunt.util.spawn(
+      cmd: 'node',
+      args: ['app.js']
+    )
 
 
   grunt.registerTask 'default', ['jshint:server', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'clean:work']
   grunt.registerTask 'dist-clean', ['clean:work', 'clean:dist']
+  grunt.registerTask 'dev', ['env:development','server', 'watch']
