@@ -1,5 +1,7 @@
 module.exports = (grunt) ->
 
+  OUTPUT_DIRECTORY = 'dist/'
+
   grunt.initConfig
     jshint:
       server:
@@ -19,19 +21,29 @@ module.exports = (grunt) ->
     uglify:
       client:
         files:
-          'dist/public/javascripts/all.js': 'public/javascripts/**.js'
+          OUTPUT_DIRECTORY + 'public/javascripts/all.js': 'public/javascripts/**.js'
 
     copy:
       client:
         src: ['public/images/**', 'public/stylesheets/**']
-        dest: 'dist/'
+        dest: OUTPUT_DIRECTORY
       server:
         src: ['routes/**', 'views/**', 'app.js']
-        dest: 'dist/'
+        dest: OUTPUT_DIRECTORY
 
     clean:
       work: ['work']
-      dist: ['dist']
+      dist: [OUTPUT_DIRECTORY]
+
+    jasmine:
+      server:
+        src: 'public/routes/*.js'
+        options:
+          specs: 'specs/*.js'
+      client:
+        src: 'public/javascripts/**/*.js'
+        options:
+          specs: 'public/specs/*.js'
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-concat'
@@ -40,6 +52,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-less'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-jasmine'
 
 
   grunt.registerTask 'default', ['jshint:server', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'clean:work']

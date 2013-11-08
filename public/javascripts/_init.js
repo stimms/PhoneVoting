@@ -1,1 +1,1 @@
-Voting = Voting || {};
+var Voting = Voting || {};
