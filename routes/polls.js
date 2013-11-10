@@ -1,3 +1,4 @@
 exports.list = function(req, res){
-    res.send([{name: "poll one"}, {name: "poll two"}]);
+    res.send([{id: 'fdsafd', name: "poll one"},
+              {id: 'wfefda', name: "poll two"}]);
 };

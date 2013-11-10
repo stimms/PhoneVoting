@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  h1 Polls
-  ul
-    li item
-    li item
-  p env is #{env}
+  div(ng-controller="Voting.Index")
+      h1 Polls
+      ul
+        li(ng-repeat="poll in polls")
+            <a href="poll/{{poll.id}}">{{poll.name}}</a>
+      p env is #{env}

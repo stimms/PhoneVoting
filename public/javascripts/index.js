@@ -1,11 +1,12 @@
 var Voting;
 (function (Voting) {
     var Index = (function () {
-        function Index() {
+        function Index($scope) {
+            $scope.polls = [
+                { id: 'fdsafd', name: "poll one" },
+                { id: 'wfefda', name: "poll two" }
+            ];
         }
-        Index.prototype.Init = function () {
-            console.log("Index init");
-        };
         return Index;
     })();
     Voting.Index = Index;

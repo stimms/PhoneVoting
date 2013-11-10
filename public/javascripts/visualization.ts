@@ -1,13 +1,9 @@
 module Voting{
     export class Visualization{
-        constructor()
+        constructor($scope)
         {
-
-        }
-
-        public Init()
-        {
-            alert("init");
+            $scope.polls = [{id: 'fdsafd', name: "poll one"},
+                {id: 'wfefda', name: "poll two"}];
         }
     }
 }

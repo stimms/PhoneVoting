@@ -9,7 +9,7 @@ $(()=>{
 var controller;
 function Init()
 {
-    if(Voting[GetController()] != null)
+    if(Voting[GetController()] !== null)
     {
         controller = new Voting[GetController()]();
         controller.Init();

@@ -1,11 +1,12 @@
 var Voting;
 (function (Voting) {
     var Visualization = (function () {
-        function Visualization() {
+        function Visualization($scope) {
+            $scope.polls = [
+                { id: 'fdsafd', name: "poll one" },
+                { id: 'wfefda', name: "poll two" }
+            ];
         }
-        Visualization.prototype.Init = function () {
-            alert("init");
-        };
         return Visualization;
     })();
     Voting.Visualization = Visualization;
