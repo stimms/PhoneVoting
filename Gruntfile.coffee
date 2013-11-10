@@ -3,6 +3,12 @@ module.exports = (grunt) ->
   OUTPUT_DIRECTORY = 'dist/'
 
   grunt.initConfig
+
+    typescript:
+      client:
+        src: ['public/javascripts/*.ts']
+        dest: ''
+
     jshint:
       server:
         src: ['app.js', 'route/**.js']
@@ -21,7 +27,7 @@ module.exports = (grunt) ->
     uglify:
       client:
         files:
-          OUTPUT_DIRECTORY + 'public/javascripts/all.js': 'public/javascripts/**.js'
+          'dist/public/javascripts/all.js': ['work/javascripts/all.js', 'public/bower_components/d3/d3.js', 'public/bower_components/jquery/jquery.js']
 
     copy:
       client:
@@ -60,8 +66,20 @@ module.exports = (grunt) ->
 
     watch:
       all:
-        files: ['views/*', 'routes/*.js']
-        tasks: ['server']
+        files: ['views/*.jade', 'routes/*.js']
+        tasks: ['spawn:dev']
+
+    spawn:
+      dev:
+        command: "node"
+        commandArgs: ['app.js']
+        directory: "."
+      prod:
+        command: "node"
+        commandArgs: ['app.js']
+        directory: "."
+        cwd: "dist"
+
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-concat'
@@ -72,16 +90,15 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-typescript'
   grunt.loadNpmTasks 'grunt-express'
+  grunt.loadNpmTasks 'grunt-spawn'
   grunt.loadNpmTasks 'grunt-env'
 
-  grunt.registerTask 'server', () ->
-    grunt.util.spawn(
-      cmd: 'node',
-      args: ['app.js']
-    )
 
 
-  grunt.registerTask 'default', ['jshint:server', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'clean:work']
+
+  grunt.registerTask 'default', ['jshint:server', 'typescript', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'clean:work']
   grunt.registerTask 'dist-clean', ['clean:work', 'clean:dist']
-  grunt.registerTask 'dev', ['env:development','server', 'watch']
+  grunt.registerTask 'dev', ['env:development','typescript', 'spawn:dev', 'watch']
+  grunt.registerTask 'prod', ['default', 'spawn:prod', 'watch']

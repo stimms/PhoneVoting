@@ -7,8 +7,7 @@ html
     block content
 
   if(env == 'development')
-    script(type='text/javascript', src='javascripts/_init.js')
-    script(type='text/javascript', src='javascripts/visualization.js')
+    include devScripts.jade
 
   else
-      script(type='text/javascript', src='javascripts/all.js')
+    include prodScripts.jade
