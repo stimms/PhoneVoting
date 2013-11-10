@@ -1,12 +1,12 @@
 var Voting;
 (function (Voting) {
-    var Vizualization = (function () {
-        function Vizualization() {
+    var Visualization = (function () {
+        function Visualization() {
         }
-        Vizualization.prototype.Init = function () {
+        Visualization.prototype.Init = function () {
             alert("init");
         };
-        return Vizualization;
+        return Visualization;
     })();
-    Voting.Vizualization = Vizualization;
+    Voting.Visualization = Visualization;
 })(Voting || (Voting = {}));

@@ -1,5 +1,5 @@
 module Voting{
-    export class Vizualization{
+    export class Visualization{
         constructor()
         {
 

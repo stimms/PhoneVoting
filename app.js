@@ -5,7 +5,7 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
+var polls = require('./routes/polls');
 var http = require('http');
 var io = require('socket.io');
 var path = require('path');
@@ -31,7 +31,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/polls', polls.list);
 
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){

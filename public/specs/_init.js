@@ -7,4 +7,10 @@ describe('Init', function() {
         GetPathName = function(){return "/visualization";}
         expect(GetController()).toBe('visualization');
     });
+    it('inits the proper class', function()
+    {
+        GetController = function(){return "Index";}
+        Init();
+        expect(controller).toBeDefined();
+    });
 });

@@ -1,10 +1,10 @@
 module Voting{
-    class Index{
+    export class Index{
         constructor(){
 
         }
         public Init(){
-
+            console.log("Index init");
         }
     }
 }

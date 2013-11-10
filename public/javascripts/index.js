@@ -4,8 +4,9 @@ var Voting;
         function Index() {
         }
         Index.prototype.Init = function () {
+            console.log("Index init");
         };
         return Index;
     })();
+    Voting.Index = Index;
 })(Voting || (Voting = {}));
-//# sourceMappingURL=index.js.map

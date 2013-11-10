@@ -1,13 +1,25 @@
+///<reference path="visualization.ts"/>
 declare var $;
 
 $(()=>{
-   //document.location.pathname)
+    console.log(GetPathName());
+    Init();
 });
+
+var controller;
+function Init()
+{
+    if(Voting[GetController()] != null)
+    {
+        controller = new Voting[GetController()]();
+        controller.Init();
+    }
+}
 
 function GetController():string
 {
     if(GetPathName() == "/")
-        return "index";
+        return "Index";
     return GetPathName().substr(1);
 }
 
