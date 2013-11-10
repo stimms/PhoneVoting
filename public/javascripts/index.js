@@ -1,11 +1,10 @@
+angular.module('app', ['ngResource']);
 var Voting;
 (function (Voting) {
     var Index = (function () {
-        function Index($scope) {
-            $scope.polls = [
-                { id: 'fdsafd', name: "poll one" },
-                { id: 'wfefda', name: "poll two" }
-            ];
+        function Index($scope, $resource) {
+            var data = $resource('/poll/:id');
+            $scope.polls = data.get();
         }
         return Index;
     })();
