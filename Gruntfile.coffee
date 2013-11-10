@@ -46,10 +46,12 @@ module.exports = (grunt) ->
         src: 'public/routes/*.js'
         options:
           specs: 'specs/*.js'
+
       client:
         src: 'public/javascripts/**/*.js'
         options:
           specs: 'public/specs/*.js'
+          vendor: 'public/bower_components/jquery/jquery.js'
 
     env:
       development:
