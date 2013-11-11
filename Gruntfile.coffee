@@ -27,7 +27,12 @@ module.exports = (grunt) ->
     uglify:
       client:
         files:
-          'dist/public/javascripts/all.js': ['work/javascripts/all.js', 'public/bower_components/d3/d3.js', 'public/bower_components/angular/angular.js', 'public/bower_components/jquery/jquery.js']
+          'dist/public/javascripts/all.js': ['work/javascripts/all.js',
+                                             'public/bower_components/d3/d3.js',
+                                             'public/bower_components/angular/angular.js',
+                                             'public/bower_components/angular-resource/angular-resource.js',
+                                             'public/bower_components/angular-route/angular-route.js'
+                                             'public/bower_components/jquery/jquery.js']
 
     copy:
       client:

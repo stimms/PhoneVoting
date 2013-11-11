@@ -9,6 +9,7 @@ var polls = require('./routes/polls');
 var http = require('http');
 var io = require('socket.io');
 var path = require('path');
+var azure = require('azure');
 
 var app = express();
 
