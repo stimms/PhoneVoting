@@ -32,7 +32,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/polls', polls.list);
+app.get('/poll', polls.list);
+app.get('/polls.html', polls.htmlList);
+app.get('/poll.html', polls.htmlDetail);
 
 var server = http.createServer(app);
 server.listen(app.get('port'), function(){

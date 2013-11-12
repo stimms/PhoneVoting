@@ -34,6 +34,10 @@ exports.list = function(req, res){
             res.send(_und.map(entities, function(item) { return {id: item.RowKey, name: item.Name} }));
         }
     });
-
-
+};
+exports.htmlList = function(req, res){
+    res.render('polls', { env: process.env.NODE_ENV});
+};
+exports.htmlDetail = function(req, res){
+    res.render('poll', { env: process.env.NODE_ENV});
 };
