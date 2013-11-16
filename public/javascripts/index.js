@@ -9,7 +9,7 @@ votingControllers.controller('IndexCtrl', [
     '$scope',
     '$resource',
     function IndexCtrl($scope, $resource) {
-        var data = $resource('/poll/:id', {}, { 'get': { method: "GET", isArray: true } });
+        var data = $resource('/polls', {}, { 'get': { method: "GET", isArray: true } });
         data.get(function (data) {
             $scope.polls = data;
         });
@@ -17,9 +17,13 @@ votingControllers.controller('IndexCtrl', [
 ]);
 votingControllers.controller('PollCtrl', [
     '$scope',
-    function PollCtrl($scope) {
-        $scope.name = "";
-        alert('poll ctrl');
+    '$resource',
+    '$routeParams',
+    function PollCtrl($scope, $resource, $routeParams) {
+        var data = $resource('/poll/:id', { 'id': $routeParams.pollId }, { 'get': { method: 'GET', isArray: false } });
+        data.get(function (data) {
+            $scope.poll = data;
+        });
     }
 ]);
 //# sourceMappingURL=index.js.map

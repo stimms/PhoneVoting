@@ -14,14 +14,16 @@ var mod = angular.module('VotingApp', ['ngResource', 'ngRoute', 'votingControlle
 var votingControllers = angular.module('votingControllers', []);
 votingControllers.controller('IndexCtrl', ['$scope', '$resource', function IndexCtrl($scope, $resource)
     {
-        var data = $resource('/poll/:id',{}, {'get': {method: "GET", isArray: true}});
+        var data = $resource('/polls',{}, {'get': {method: "GET", isArray: true}});
         data.get(function(data){
             $scope.polls = data;
         });
     }]
 );
-votingControllers.controller('PollCtrl', ['$scope', function PollCtrl($scope)
+votingControllers.controller('PollCtrl', ['$scope', '$resource', '$routeParams', function PollCtrl($scope, $resource, $routeParams)
     {
-        $scope.name = "";
-        alert('poll ctrl');
+        var data = $resource('/poll/:id', {'id': $routeParams.pollId}, {'get': {method: 'GET', isArray: false}});
+        data.get(function(data){
+            $scope.poll = data;
+        });
     }]);
