@@ -1,7 +1,5 @@
-///<reference path="../typings/jquery/jquery.d.ts"/>
-///<reference path="../typings/angularjs/angular.d.ts"/>
 var mod = angular.module('VotingApp', ['ngResource', 'ngRoute', 'votingControllers']).config(function ($routeProvider) {
-    $routeProvider.when("/poll/:pollId", { controller: "PollCtrl", templateUrl: "/poll.html" }).when("/polls", { controller: "IndexCtrl", templateUrl: "/polls.html" }).otherwise({ redirectTo: "/polls" });
+    $routeProvider.when("/poll/:pollId", { controller: "PollCtrl", templateUrl: "/poll.html" }).when("/polls", { controller: "IndexCtrl", templateUrl: "/polls.html" }).when("/add", { controller: "AddCtrl", templateUrl: "/add.html" }).otherwise({ redirectTo: "/polls" });
 });
 
 var votingControllers = angular.module('votingControllers', []);
@@ -26,4 +24,18 @@ votingControllers.controller('PollCtrl', [
         });
     }
 ]);
-//# sourceMappingURL=index.js.map
+votingControllers.controller('AddCtrl', [
+    '$scope',
+    '$resource',
+    '$location',
+    function AddCtrl($scope, $resource, $location) {
+        $scope.add = function () {
+            var Poll = $resource('/poll', {}, { 'add': { method: 'POST' } });
+            var poll = new Poll();
+            $.extend(poll, $scope.addItem);
+            poll.$save(function () {
+                $location.path("/");
+            });
+        };
+    }
+]);

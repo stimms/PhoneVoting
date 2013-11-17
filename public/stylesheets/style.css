@@ -5,3 +5,13 @@ body {
 a {
   color: #00B7FF;
 }
+label {
+  display: block;
+  margin-bottom: -1em;
+}
+input {
+  display: block;
+  position: relative;
+  left: 7em;
+  top: -0.5em;
+}

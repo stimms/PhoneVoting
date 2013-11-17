@@ -7,6 +7,7 @@ var mod = angular.module('VotingApp', ['ngResource', 'ngRoute', 'votingControlle
         $routeProvider
             .when("/poll/:pollId", {controller:"PollCtrl", templateUrl: "/poll.html"})
             .when("/polls",{controller:"IndexCtrl", templateUrl: "/polls.html"})
+            .when("/add", {controller:"AddCtrl", templateUrl: "/add.html"})
             .otherwise({redirectTo: "/polls"});
     });
 
@@ -27,3 +28,15 @@ votingControllers.controller('PollCtrl', ['$scope', '$resource', '$routeParams',
             $scope.poll = data;
         });
     }]);
+votingControllers.controller('AddCtrl', ['$scope', '$resource', '$location', function AddCtrl($scope, $resource, $location)
+{
+    $scope.add = function()
+    {
+        var Poll = $resource('/poll', {}, {'add': {method: 'POST'}});
+        var poll = new Poll();
+        $.extend(poll, $scope.addItem);
+        poll.$save(function(){
+            $location.path("/");
+        });
+    }
+}]);
