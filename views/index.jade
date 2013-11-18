@@ -1,6 +1,10 @@
 extends layout
 
 block content
+  a(href="#/") Home
+  span(class="divider") |
+  a(href="#/add") Add
+
   div(ng-controller="IndexCtrl")
       div(ng-view)
 

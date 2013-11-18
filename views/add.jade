@@ -1,0 +1,15 @@
+h2 Add Poll
+form
+    label(for="name") Name:
+    input(type="text", id="name",ng-model="addItem.name")
+    label(for="key") Poll Key:
+    input(type="text", id="key", ng-model="addItem.key")
+    fieldset
+        legend Poll Values
+        - for(var i = 0; i<8;i++)
+            div
+                label(for="optionName" +i ) Option:
+                input(type="text", ng-model="addItem.optionName"+i)
+                label(for="optionKey" + i) Key:
+                input(type="text", ng-model="addItem.optionKey"+i)
+    button(ng-click="add()") Add

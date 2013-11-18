@@ -2,7 +2,7 @@ var mod = angular.module('VotingApp', ['ngResource', 'ngRoute', 'votingControlle
     $routeProvider.when("/poll/:pollId", { controller: "PollCtrl", templateUrl: "/poll.html" }).when("/polls", { controller: "IndexCtrl", templateUrl: "/polls.html" }).when("/add", { controller: "AddCtrl", templateUrl: "/add.html" }).otherwise({ redirectTo: "/polls" });
 });
 
-var votingControllers = angular.module('votingControllers', []);
+var votingControllers = angular.module('votingControllers', ['visualization']);
 votingControllers.controller('IndexCtrl', [
     '$scope',
     '$resource',
@@ -17,10 +17,12 @@ votingControllers.controller('PollCtrl', [
     '$scope',
     '$resource',
     '$routeParams',
-    function PollCtrl($scope, $resource, $routeParams) {
+    'visualization',
+    function PollCtrl($scope, $resource, $routeParams, visualization) {
         var data = $resource('/poll/:id', { 'id': $routeParams.pollId }, { 'get': { method: 'GET', isArray: false } });
         data.get(function (data) {
             $scope.poll = data;
+            visualization.activate($scope);
         });
     }
 ]);

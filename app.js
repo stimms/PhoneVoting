@@ -32,7 +32,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/poll', polls.list);
+app.get('/polls', polls.list);
+app.post('/poll', polls.add);
+app.get('/add.html', polls.htmlAdd);
+app.get(/^\/poll\/(.*)/, polls.details);
 app.get('/polls.html', polls.htmlList);
 app.get('/poll.html', polls.htmlDetail);
 

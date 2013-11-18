@@ -12,7 +12,7 @@ var mod = angular.module('VotingApp', ['ngResource', 'ngRoute', 'votingControlle
     });
 
 
-var votingControllers = angular.module('votingControllers', []);
+var votingControllers = angular.module('votingControllers', ['visualization']);
 votingControllers.controller('IndexCtrl', ['$scope', '$resource', function IndexCtrl($scope, $resource)
     {
         var data = $resource('/polls',{}, {'get': {method: "GET", isArray: true}});
@@ -21,19 +21,20 @@ votingControllers.controller('IndexCtrl', ['$scope', '$resource', function Index
         });
     }]
 );
-votingControllers.controller('PollCtrl', ['$scope', '$resource', '$routeParams', function PollCtrl($scope, $resource, $routeParams)
+votingControllers.controller('PollCtrl', ['$scope', '$resource', '$routeParams', 'visualization', function PollCtrl($scope, $resource, $routeParams, visualization)
     {
         var data = $resource('/poll/:id', {'id': $routeParams.pollId}, {'get': {method: 'GET', isArray: false}});
         data.get(function(data){
             $scope.poll = data;
+            visualization.activate($scope);
         });
     }]);
 votingControllers.controller('AddCtrl', ['$scope', '$resource', '$location', function AddCtrl($scope, $resource, $location)
 {
     $scope.add = function()
     {
-        var Poll = $resource('/poll', {}, {'add': {method: 'POST'}});
-        var poll = new Poll();
+        var Poll:any = $resource('/poll', {}, {'add': {method: 'POST'}});
+        var poll:any = new Poll();
         $.extend(poll, $scope.addItem);
         poll.$save(function(){
             $location.path("/");
