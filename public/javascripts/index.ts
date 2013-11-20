@@ -1,5 +1,6 @@
 ///<reference path="../typings/jquery/jquery.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
+///<reference path="../typings/underscore/underscore.d.ts"/>
 
 var mod = angular.module('VotingApp', ['ngResource', 'ngRoute', 'votingControllers']).
     config(($routeProvider)=>
@@ -19,6 +20,15 @@ votingControllers.controller('IndexCtrl', ['$scope', '$resource', function Index
         data.get(function(data){
             $scope.polls = data;
         });
+
+        $scope.delete = function(id)
+        {
+            console.log("id" +  id);
+            var Poll:any = $resource('/poll', {'id': id }, {'delete': {method: 'DELETE'}});
+            var poll:any = new Poll();
+            poll.$delete();
+            $scope.polls = _.reject($scope.polls, x => x.id == id);
+        };
     }]
 );
 votingControllers.controller('PollCtrl', ['$scope', '$resource', '$routeParams', 'visualization', function PollCtrl($scope, $resource, $routeParams, visualization)

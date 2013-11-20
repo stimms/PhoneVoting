@@ -13,6 +13,43 @@ exports.list = function(req, res){
     });
 };
 
+exports.recordVote = function(req, res)
+{
+    console.log(req.body);
+    console.log(req.params);
+    var pollKey = req.body.pollKey;
+    console.log("poll key: " + pollKey);
+    var optionKey = req.body.optionKey;
+    console.log("option key: " + optionKey);
+
+    var azure= require('azure');
+    var tableService = azure.createTableService();
+
+    tableService.createTableIfNotExists('polls', function(error){
+        if(!error){
+            var query = azure.TableQuery.select().from('polls').where("key eq ?", pollKey);
+            tableService.queryEntities(query, function(error, entities){
+                if(entities.length ==1 ){
+                    var entity = entities[0];
+                    console.log(entity);
+                    var updatingEntity = { RowKey: entity.RowKey, PartitionKey: entity.PartitionKey};
+                    for(var i = 0; i<8; i++)
+                    {
+                        if(entity["optionKey" + i] && entity["optionKey" + i] == optionKey)
+                        {
+                            updatingEntity["optionValue" + i] = entity["optionValue" + i] || 0;
+                            updatingEntity["optionValue" + i] += 1;
+                        }
+                    }
+                    tableService.mergeEntity('polls', updatingEntity, function(error){
+                        console.log(error);
+                    });
+                }
+            });
+        }
+    });
+}
+
 exports.add = function(req, res)
 {
     var name = req.params.name;
@@ -42,6 +79,23 @@ exports.add = function(req, res)
         else{
          console.log(error);
         }
+    });
+    res.send(true);
+}
+
+exports.delete = function(req, res)
+{
+    var azure= require('azure');
+    var retryOperations = new azure.ExponentialRetryPolicyFilter();
+    var tableService = azure.createTableService().withFilter(retryOperations);
+    var id = req.query["id"];
+    console.log(id);
+    tableService.deleteEntity('polls', {PartitionKey:'polls', RowKey: id + ""}, function(error){
+       if(!error)
+           console.log("deleted");
+        else
+            console.log(error);
+
     });
     res.send(true);
 }

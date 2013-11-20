@@ -1,6 +1,3 @@
-///<reference path="../typings/jquery/jquery.d.ts"/>
-///<reference path="../typings/angularjs/angular.d.ts"/>
-///<reference path="../typings/d3/d3.d.ts"/>
 var visualization = angular.module('visualization', []).value("visualization", {
     svg: null,
     data: null,
@@ -37,4 +34,3 @@ var visualization = angular.module('visualization', []).value("visualization", {
         });
     }
 });
-//# sourceMappingURL=visualization.js.map

@@ -11,6 +11,16 @@ votingControllers.controller('IndexCtrl', [
         data.get(function (data) {
             $scope.polls = data;
         });
+
+        $scope.delete = function (id) {
+            console.log("id" + id);
+            var Poll = $resource('/poll', { 'id': id }, { 'delete': { method: 'DELETE' } });
+            var poll = new Poll();
+            poll.$delete();
+            $scope.polls = _.reject($scope.polls, function (x) {
+                return x.id == id;
+            });
+        };
     }
 ]);
 votingControllers.controller('PollCtrl', [

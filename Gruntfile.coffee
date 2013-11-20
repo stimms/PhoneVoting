@@ -31,8 +31,9 @@ module.exports = (grunt) ->
                                              'public/bower_components/d3/d3.js',
                                              'public/bower_components/angular/angular.js',
                                              'public/bower_components/angular-resource/angular-resource.js',
-                                             'public/bower_components/angular-route/angular-route.js'
-                                             'public/bower_components/jquery/jquery.js']
+                                             'public/bower_components/angular-route/angular-route.js',
+                                             'public/bower_components/jquery/jquery.js',
+                                             'public/bower_components/underscore/underscore.js']
 
     copy:
       client:
