@@ -27,13 +27,23 @@ module.exports = (grunt) ->
     uglify:
       client:
         files:
-          'dist/public/javascripts/all.js': ['work/javascripts/all.js',
+          'dist/public/javascripts/all.js': ['public/bower_components/jquery/jquery.js',
                                              'public/bower_components/d3/d3.js',
                                              'public/bower_components/angular/angular.js',
                                              'public/bower_components/angular-resource/angular-resource.js',
                                              'public/bower_components/angular-route/angular-route.js',
-                                             'public/bower_components/jquery/jquery.js',
-                                             'public/bower_components/underscore/underscore.js']
+                                             'public/bower_components/underscore/underscore.js',
+                                             'public/javascripts/*.js']
+    concat:
+      client:
+        src: ['public/bower_components/jquery/jquery.js',
+             'public/bower_components/d3/d3.js',
+             'public/bower_components/angular/angular.js',
+             'public/bower_components/angular-resource/angular-resource.js',
+             'public/bower_components/angular-route/angular-route.js',
+             'public/bower_components/underscore/underscore.js',
+             'public/javascripts/*.js']
+        dest: 'dist/public/javascripts/all.js'
 
     copy:
       client:
@@ -41,6 +51,9 @@ module.exports = (grunt) ->
         dest: OUTPUT_DIRECTORY
       server:
         src: ['routes/**', 'views/**', 'app.js']
+        dest: OUTPUT_DIRECTORY
+      packages:
+        src: ['package.json']
         dest: OUTPUT_DIRECTORY
 
     clean:
@@ -106,7 +119,7 @@ module.exports = (grunt) ->
 
 
 
-  grunt.registerTask 'default', ['jshint:server', 'typescript', 'jshint:client', 'less', 'csslint', 'uglify', 'copy', 'clean:work']
+  grunt.registerTask 'default', ['jshint:server', 'typescript', 'jshint:client', 'less', 'csslint', 'concat', 'copy', 'clean:work']
   grunt.registerTask 'dist-clean', ['clean:work', 'clean:dist']
   grunt.registerTask 'dev', ['env:development','typescript', 'spawn:dev', 'watch']
   grunt.registerTask 'prod', ['default', 'spawn:prod', 'watch']

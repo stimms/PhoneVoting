@@ -12,13 +12,32 @@ exports.list = function(req, res){
             res.send(_und.map(entities, function(item) { return {id: item.RowKey, name: item.name} }));
         }
     });
-};
+}
+
+exports.recordPhoneVote = function(req, res)
+{
+    var sockets = req.app.locals.socketio;
+    var pollKey = req.body.session.initialText.split(" ")[0];
+    var optionKey = req.body.session.initialText.split(" ")[1];
+    vote(pollKey, optionKey);
+
+    sockets.sockets.emit("vote", {pollKey: pollKey, optionKey: optionKey});
+
+    res.send(true);
+}
 
 exports.recordVote = function(req, res)
 {
     var pollKey = req.body.pollKey;
     var optionKey = req.body.optionKey;
+    vote(pollKey, optionKey);
+    var sockets = req.app.locals.socketio;
+    sockets.sockets.emit("vote", {pollKey: pollKey, optionKey: optionKey});
 
+    res.send(true);
+}
+
+vote = function(pollKey, optionKey){
     var azure= require('azure');
     var tableService = azure.createTableService();
 
@@ -46,10 +65,6 @@ exports.recordVote = function(req, res)
         }
     });
 
-    var sockets = req.app.locals.socketio;
-    sockets.sockets.emit("vote", {pollKey: pollKey, optionKey: optionKey});
-
-    res.send(true);
 }
 
 exports.add = function(req, res)

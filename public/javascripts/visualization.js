@@ -20,7 +20,7 @@ var visualization = angular.module('visualization', []).value("visualization", {
         this.socket();
     },
     socket: function () {
-        var socket = io.connect('http://localhost:3000');
+        var socket = io.connect('http://' + window.location.hostname + '');
         var me = this;
         socket.on('vote', function (item) {
             if (me.name == item.pollKey) {
@@ -41,7 +41,7 @@ var visualization = angular.module('visualization', []).value("visualization", {
         this.yScale = d3.scale.linear().domain([0, d3.max(this.data, function (d) {
                 return d.value;
             })]).range([0, this.height - 30]);
-        this.xScale = d3.scale.ordinal().rangeBands([0, this.width], .1).domain(this.data.map(function (d) {
+        this.xScale = d3.scale.ordinal().rangeBands([0, this.width], 0.1).domain(this.data.map(function (d) {
             return d.key;
         }));
 
@@ -63,4 +63,3 @@ var visualization = angular.module('visualization', []).value("visualization", {
         });
     }
 });
-//# sourceMappingURL=visualization.js.map

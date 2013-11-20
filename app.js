@@ -35,6 +35,7 @@ app.get('/', routes.index);
 app.get('/polls', polls.list);
 app.post('/poll', polls.add);
 app.post('/recordVote', polls.recordVote);
+app.post('/recordPhoneVote', polls.recordPhoneVote);
 app.delete('/poll', polls.delete);
 app.get('/add.html', polls.htmlAdd);
 app.get(/^\/poll\/(.*)/, polls.details);

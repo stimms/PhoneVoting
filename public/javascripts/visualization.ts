@@ -32,7 +32,7 @@ var visualization:any = angular.module('visualization', []).value("visualization
     },
     socket: function()
     {
-        var socket = io.connect('http://localhost:3000');
+        var socket = io.connect('http://' + window.location.hostname + '');
         var me = this;
         socket.on('vote',  (item) => {
             if(me.name == item.pollKey)
@@ -55,7 +55,7 @@ var visualization:any = angular.module('visualization', []).value("visualization
                                 .domain([0, d3.max(this.data, d=>d.value)])
                                 .range([0,this.height-30]);
         this.xScale = d3.scale.ordinal()
-            .rangeBands([0, this.width], .1)
+            .rangeBands([0, this.width], 0.1)
             .domain(this.data.map(d => d.key));
 
         var rectangles = this.svg.selectAll("rect")
