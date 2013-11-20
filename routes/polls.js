@@ -133,7 +133,7 @@ exports.details = function(req, res){
            if(entity["optionName" + i])
             entity.options.push({name: entity["optionName" + i],
                                  key: entity["optionKey" + i],
-                                 value: entity["optionValue" + i] || 0});
+                                 value: entity["optionValue" + i] || 1});
        }
        res.send(entity);
     });

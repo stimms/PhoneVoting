@@ -55,11 +55,20 @@ var visualization = angular.module('visualization', []).value("visualization", {
         rectangles.enter().append("rect").attr("class", "bar").attr("width", this.xScale.rangeBand()).attr("y", function (d) {
             return _this.height - _this.yScale(d.value);
         }).attr("x", function (d) {
-            return _this.xScale(d.name);
+            return _this.xScale(d.key);
         }).style("fill", function (d) {
             return _this.colours(d.name);
         }).transition().attr("height", function (d) {
             return _this.yScale(d.value);
         });
+
+        this.svg.selectAll("text").data(this.data).enter().append("text").style("fill", "black").attr("x", function (d) {
+            return _this.xScale(d.key) + (_this.xScale.rangeBand() / 2);
+        }).attr("y", 30).attr("font-size", "20px").attr("text-anchor", "middle").attr("width", function (d) {
+            return _this.xScale.rangeBand();
+        }).attr("height", "30px").text(function (d) {
+            return d.name + "(" + d.value + ")";
+        });
     }
 });
+//# sourceMappingURL=visualization.js.map

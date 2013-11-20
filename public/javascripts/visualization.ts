@@ -70,10 +70,23 @@ var visualization:any = angular.module('visualization', []).value("visualization
             .attr("class", "bar")
             .attr("width", this.xScale.rangeBand())
             .attr("y", d => this.height - this.yScale(d.value))
-            .attr("x", d => this.xScale(d.name))
+            .attr("x", d => this.xScale(d.key))
             .style("fill", d => this.colours(d.name))
             .transition()
             .attr("height", d => this.yScale(d.value));
+
+        this.svg.selectAll("text")
+            .data(this.data)
+            .enter()
+            .append("text")
+            .style("fill", "black")
+            .attr("x", d => this.xScale(d.key) + (this.xScale.rangeBand()/2))
+            .attr("y", 30)
+            .attr("font-size", "20px")
+            .attr("text-anchor", "middle")
+            .attr("width", d => this.xScale.rangeBand())
+            .attr("height", "30px")
+            .text(d=>d.name + "(" + d.value + ")");
 
     }
 });
