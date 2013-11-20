@@ -1,4 +1,5 @@
 var _und = require('underscore');
+var util = require('util');
 exports.list = function(req, res){
     var azure= require('azure');
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -15,12 +16,8 @@ exports.list = function(req, res){
 
 exports.recordVote = function(req, res)
 {
-    console.log(req.body);
-    console.log(req.params);
     var pollKey = req.body.pollKey;
-    console.log("poll key: " + pollKey);
     var optionKey = req.body.optionKey;
-    console.log("option key: " + optionKey);
 
     var azure= require('azure');
     var tableService = azure.createTableService();
@@ -42,12 +39,17 @@ exports.recordVote = function(req, res)
                         }
                     }
                     tableService.mergeEntity('polls', updatingEntity, function(error){
-                        console.log(error);
+
                     });
                 }
             });
         }
     });
+
+    var sockets = req.app.locals.socketio;
+    sockets.sockets.emit("vote", {pollKey: pollKey, optionKey: optionKey});
+
+    res.send(true);
 }
 
 exports.add = function(req, res)

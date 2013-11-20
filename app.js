@@ -47,11 +47,4 @@ server.listen(app.get('port'), function(){
 });
 
 var socketio = io.listen(server);
-
-socketio.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });
-    socket.on('my other event', function (data) {
-        console.log(data);
-    });
-});
-
+app.locals.socketio = socketio;

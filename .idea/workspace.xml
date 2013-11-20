@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21fb2d03-cab6-4d11-9046-8a6c2d2ccff0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.coffee" afterPath="$PROJECT_DIR$/Gruntfile.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/devScripts.jade" afterPath="$PROJECT_DIR$/views/devScripts.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/index.js.map" afterPath="$PROJECT_DIR$/public/javascripts/index.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/index.js" afterPath="$PROJECT_DIR$/public/javascripts/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/index.ts" afterPath="$PROJECT_DIR$/public/javascripts/index.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/polls.jade" afterPath="$PROJECT_DIR$/views/polls.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/polls.js" afterPath="$PROJECT_DIR$/routes/polls.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/visualization.js.map" afterPath="$PROJECT_DIR$/public/javascripts/visualization.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/visualization.js" afterPath="$PROJECT_DIR$/public/javascripts/visualization.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/visualization.ts" afterPath="$PROJECT_DIR$/public/javascripts/visualization.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Voting.iws" />
@@ -43,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="visualization.ts" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="visualization.ts" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/javascripts/visualization.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="51" selection-start="1505" selection-end="1505" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="795">
+            <state line="63" column="63" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.47275922" vertical-offset="676" max-vertical-offset="1260">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -54,10 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="polls.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="polls.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/polls.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="43" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.7908612" vertical-offset="210" max-vertical-offset="2070">
+            <state line="49" column="19" selection-start="1873" selection-end="1873" vertical-scroll-proportion="-5.3076925" vertical-offset="597" max-vertical-offset="2100">
               <folding />
             </state>
           </provider>
@@ -84,7 +80,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="14" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="945">
+            <state line="49" column="31" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.0" vertical-offset="271" max-vertical-offset="840">
               <folding />
             </state>
           </provider>
@@ -102,7 +98,7 @@
       <file leaf-file-name="index.ts" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/index.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="18" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="870">
+            <state line="28" column="18" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="870">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -146,13 +142,13 @@
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.less" />
         <option value="$PROJECT_DIR$/views/poll.jade" />
-        <option value="$PROJECT_DIR$/public/javascripts/visualization.ts" />
         <option value="$PROJECT_DIR$/views/polls.jade" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/devScripts.jade" />
         <option value="$PROJECT_DIR$/Gruntfile.coffee" />
         <option value="$PROJECT_DIR$/public/javascripts/index.ts" />
+        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/polls.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/visualization.ts" />
       </list>
     </option>
   </component>
@@ -501,15 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/visualization.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="51" selection-start="1505" selection-end="1505" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="795">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/polls.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="111" selection-start="157" selection-end="157" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
@@ -538,6 +525,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="31" selection-start="1377" selection-end="1377" vertical-scroll-proportion="0.0" vertical-offset="271" max-vertical-offset="840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="18" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="870">
@@ -547,17 +541,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/routes/polls.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="14" selection-start="976" selection-end="976" vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="945">
+        <state line="49" column="19" selection-start="1873" selection-end="1873" vertical-scroll-proportion="-5.3076925" vertical-offset="597" max-vertical-offset="2100">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/polls.js">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/visualization.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="43" selection-start="1890" selection-end="1890" vertical-scroll-proportion="0.7908612" vertical-offset="210" max-vertical-offset="2070">
-          <folding />
+        <state line="63" column="63" selection-start="1913" selection-end="1913" vertical-scroll-proportion="0.47275922" vertical-offset="676" max-vertical-offset="1260">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
