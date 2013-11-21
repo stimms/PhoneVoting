@@ -75,8 +75,9 @@ var visualization:any = angular.module('visualization', []).value("visualization
             .transition()
             .attr("height", d => this.yScale(d.value));
 
-        this.svg.selectAll("text")
-            .data(this.data)
+        var text = this.svg.selectAll("text")
+            .data(this.data);
+        text
             .enter()
             .append("text")
             .style("fill", "black")
@@ -86,6 +87,10 @@ var visualization:any = angular.module('visualization', []).value("visualization
             .attr("text-anchor", "middle")
             .attr("width", d => this.xScale.rangeBand())
             .attr("height", "30px")
+            .text(d=>d.name + "(" + d.value + ")");
+
+        text
+            .transition()
             .text(d=>d.name + "(" + d.value + ")");
 
     }
